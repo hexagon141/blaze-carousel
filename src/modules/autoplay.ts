@@ -17,14 +17,16 @@ export function autoplay(
 ): Methods {
   let id: ReturnType<typeof setTimeout>;
 
-  const play = () => {
+  function play() {
     id = setInterval(() => {
       instance.position.current += settings.slideBy;
       render();
     }, speed);
-  };
+  }
 
-  const pause = () => clearInterval(id);
+  function pause() {
+    clearInterval(id)
+  }
 
   play();
 
