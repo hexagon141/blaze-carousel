@@ -1,0 +1,17 @@
+.outer {
+  overflow: hidden;
+}
+
+.inner {
+  display: flex;
+  transition: transform var(--duration, 0.25s) ease-in-out;
+  transform: translateX(calc(var(--offset) * -1));
+  will-change: transform;
+}
+
+.element {
+  flex-shrink: 0;
+  width: var(--element-width);
+  will-change: width;
+  user-select: none;
+}
