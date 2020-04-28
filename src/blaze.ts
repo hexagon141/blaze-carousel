@@ -1,5 +1,5 @@
 // @ts-ignore
-import classes from './index.css';
+import classes from './blaze.module.css';
 
 export type Render = {
   mode?: 'default' | 'silent',
