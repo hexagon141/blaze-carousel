@@ -46,7 +46,12 @@ export const cssVariables: {[key: string]: string} = {
   offset: '--offset',
 };
 
-export function blaze(outer: HTMLElement, settings: Settings) {
+const defaultSettings = {
+  items: 3,
+  slideBy: 1
+};
+
+export function blaze(outer: HTMLElement, settings: Settings = defaultSettings) {
   const instance: Instance = {
     inner: document.createElement('div'),
     elementWidth: outer.offsetWidth / settings.items,
