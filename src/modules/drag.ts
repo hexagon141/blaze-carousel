@@ -1,5 +1,5 @@
-import {cssVariables} from '../blaze';
 import type {Instance, RenderFunction, Settings} from '../blaze';
+import {TRANSITION_DURATION} from '../css-variables';
 
 type Params = {
   touch: boolean,
@@ -36,7 +36,7 @@ export function drag(
 
   function handleMove(event: TouchEvent | MouseEvent) {
     if (dragging) {
-      instance.inner.style.setProperty(cssVariables.duration, '0s');
+      instance.inner.style.setProperty(TRANSITION_DURATION, '0s');
 
       const moved = (coordinates - capture(event)) / instance.elementWidth;
 
@@ -70,7 +70,7 @@ export function drag(
   function handleFinish() {
     dragging = false;
     instance.position.current = Math.round(instance.position.current);
-    instance.inner.style.removeProperty(cssVariables.duration);
+    instance.inner.style.removeProperty(TRANSITION_DURATION);
     render();
   }
 }

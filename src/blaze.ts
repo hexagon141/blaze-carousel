@@ -1,5 +1,6 @@
 // @ts-ignore
 import classes from './blaze.module.css';
+import {ELEMENT_WIDTH, OFFSET, TRANSITION_DURATION} from './css-variables';
 
 export type Render = {
   mode?: 'default' | 'silent',
@@ -40,12 +41,6 @@ export type Settings = {
   }>
 }
 
-export const cssVariables: {[key: string]: string} = {
-  elementWidth: '--element-width',
-  duration: '--duration',
-  offset: '--offset',
-};
-
 const defaultSettings = {
   items: 3,
   slideBy: 1
@@ -66,7 +61,7 @@ export function blaze(outer: HTMLElement, settings: Settings = defaultSettings) 
   outer.classList.add(classes.outer);
   instance.inner.classList.add(classes.inner);
   instance.inner.style.setProperty(
-    cssVariables.elementWidth,
+    ELEMENT_WIDTH,
     100 / settings.items + '%'
   );
 
@@ -116,17 +111,17 @@ export function blaze(outer: HTMLElement, settings: Settings = defaultSettings) 
 
   function render({mode}: Render = {}) {
     if (mode === 'silent') {
-      instance.inner.style.setProperty(cssVariables.duration, '0s');
+      instance.inner.style.setProperty(TRANSITION_DURATION, '0s');
 
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          instance.inner.style.removeProperty(cssVariables.duration);
+          instance.inner.style.removeProperty(TRANSITION_DURATION);
         })
       })
     }
 
     instance.inner.style.setProperty(
-      cssVariables.offset,
+      OFFSET,
       instance.position.current * instance.elementWidth + 'px'
     );
   }
