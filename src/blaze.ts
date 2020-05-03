@@ -2,11 +2,11 @@
 import classes from './blaze.module.css';
 import {ELEMENT_WIDTH, OFFSET, TRANSITION_DURATION} from './css-variables';
 
-export type Render = {
+export type RenderConfig = {
   mode?: 'default' | 'silent',
 };
 
-export type RenderFunction = (config?: Render) => void
+export type RenderFunction = (config?: RenderConfig) => void
 
 export type Instance = {
   inner: HTMLElement,
@@ -28,7 +28,7 @@ export type Settings = {
   slideBy: number,
   modules?: Array<{
     module: (
-      render: (config: Render) => void,
+      render: (config: RenderConfig) => void,
       settings: Settings,
       instance: Instance,
       params: {
@@ -109,7 +109,7 @@ export function blaze(outer: HTMLElement, settings: Settings = defaultSettings) 
     }
   }
 
-  function render({mode}: Render = {}) {
+  function render({mode}: RenderConfig = {}) {
     if (mode === 'silent') {
       instance.inner.style.setProperty(TRANSITION_DURATION, '0s');
 
