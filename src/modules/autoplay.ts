@@ -1,21 +1,25 @@
 import type {Instance, RenderFunction, Settings} from '../blaze';
 
-type Params = {
-  speed: number
+type AutoplayConfig = {
+  speed?: number,
 }
 
-type Methods = {
+type AutoplayApi = {
   play: () => void,
   pause: () => void,
 }
+
+const defaultConfig = {
+  speed: 1500,
+};
 
 export function autoplay(
   render: RenderFunction,
   settings: Settings,
   instance: Instance,
-  {speed = 1500}: Partial<Params> = {},
-): Methods {
-  let id: ReturnType<typeof setTimeout>;
+  {speed}: AutoplayConfig = defaultConfig,
+): AutoplayApi {
+  let id: number;
 
   function play() {
     id = setInterval(() => {
