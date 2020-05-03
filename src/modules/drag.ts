@@ -1,16 +1,16 @@
 import type {Instance, RenderFunction, Settings} from '../blaze';
 import {TRANSITION_DURATION} from '../css-variables';
 
-type Params = {
-  touch: boolean,
-  mouse: boolean,
+type DragConfig = {
+  touch?: boolean,
+  mouse?: boolean,
 }
 
 export function drag(
   render: RenderFunction,
   settings: Settings,
   instance: Instance,
-  {touch, mouse}: Partial<Params> = {},
+  {touch, mouse}: DragConfig = {},
 ): void {
   if (touch) {
     instance.inner.addEventListener('touchstart', handleStart);
