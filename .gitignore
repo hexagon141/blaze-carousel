@@ -1,16 +1,21 @@
+# dev
 /docs
 
 # dependencies
 /node_modules
-/.pnp
+.pnp
 .pnp.js
 
 # testing
 /coverage
-/sandbox
 
 # production
 /package
+
+# local
+.cache
+/dist
+/sandbox
 
 # misc
 .idea
